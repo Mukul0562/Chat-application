@@ -33,7 +33,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = socket(server,{
     cors :{
-        origin:"https://earnest-horse-aebc58.netlify.app/",
+        origin:"https://rococo-brioche-f4af5a.netlify.app/",
         credentials:true,
     }
 });
