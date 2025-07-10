@@ -10,6 +10,8 @@ require('dotenv').config();
 // Middleware
 app.use(cors());
 app.use(express.json()); // ✅ Correct usage
+app.use(express.static(path.join(__dirname, 'public', 'build')));
+
 
 // Routes
 app.use("/api/auth", userRoutes);
@@ -23,6 +25,10 @@ mongoose.connect(process.env.MONGO_URI, {
     console.log("DB Connected Successfully");
 }).catch((err) => {
     console.error("MongoDB connection error:", err);
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'build', 'index.html'));
 });
 
 // Server
